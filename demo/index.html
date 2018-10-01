@@ -1,0 +1,54 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="Author" content="Ogus">
+	<meta name="Description" content="A Javascript implementation of the jaro-winkler algorithm, to compute string similarity">
+	<link rel="stylesheet" href="https://unpkg.com/picnic">
+
+	<script type="text/javascript" src="../src/jaro-winkler.min.js"></script>
+	<script type="text/javascript" src="demo.js" defer></script>
+
+	<title>Jaro-Winkler Distance - Demo</title>
+</head>
+<body>
+	<nav>
+    <h2 class="brand">Jaro-Winkler Distance</h2>
+		<div class="menu">
+			<label for="modal_info" class="pseudo button icon-help">Info</label>
+    </div>
+  </nav>
+
+	<div class="flex twelve center" style="padding:80px 10px 10px">
+
+			<div class="full four-fifth-500 three-fifth-800 two-fifth-1200">
+				<div class="flex four center">
+					<h2 class="full">Write two words</h2>
+					<div class="half"><input type="text" placeholder="First Word" id="jaro_string_1"></div>
+					<div class="half"><input type="text" placeholder="Second Word" id="jaro_string_2"></div>
+					<button class="fourth" id="jaro_button">Compute</button>
+				</div>
+			</div>
+
+			<h2 class="full" style="text-align: center" id="jaro_result"></h2>
+	</div>
+
+	<div class="modal">
+		<input id="modal_info" type="checkbox" /><label for="modal_info" class="overlay"></label>
+		<div>
+			<header>
+				<h3>Informations</h3>
+				<label for="modal_info" class="close">&times;</label>
+			</header>
+	    <section class="content">
+	      <p>Nothing to display currently</p>
+	    </section>
+			<footer>
+				<!-- <label for="modal_info" class="button dangerous">Close</label> -->
+			</footer>
+		</div>
+	</div>
+
+</body>
+</html>
