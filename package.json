@@ -1,17 +1,25 @@
 {
   "name": "jaro-winkler",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Computation of distance between words with Jaro-Winkler algorithm",
+  "author": "Ogus",
+  "license": "WTFPL",
+  "main": "src/jaro-winkler.js",
   "scripts": {
     "build": "terser src/jaro-winkler.js -c -m reserved=['JaroWinkler'] --keep-classnames > src/jaro-winkler.min.js"
   },
+  "devDependencies": {
+    "terser": "^3.9.2"
+  },
+  "keywords": [
+    "image",
+    "image-loader",
+    "asynchronous",
+    "resource"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/ogus/jaro-winkler.git"
   },
-  "author": "Ogus",
-  "license": "ISC",
-  "devDependencies": {
-    "terser": "^3.9.2"
-  }
+  "homepage": "https://github.com/ogus/jaro-winkler#readme"
 }
