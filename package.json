@@ -1,6 +1,6 @@
 {
-  "name": "jaro-winkler",
-  "version": "1.0.1",
+  "name": "@ogus/jaro-winkler",
+  "version": "1.0.2",
   "description": "Computation of distance between words with Jaro-Winkler algorithm",
   "author": "Ogus",
   "license": "WTFPL",
@@ -12,14 +12,16 @@
     "terser": "^3.9.2"
   },
   "keywords": [
-    "image",
-    "image-loader",
-    "asynchronous",
-    "resource"
+    "jaro-winkler",
+    "jaro",
+    "winkler",
+    "distance",
+    "similarity",
+    "string"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/ogus/jaro-winkler.git"
+    "url": "git+https://github.com/ogus/jaro-winkler.git"
   },
   "homepage": "https://github.com/ogus/jaro-winkler#readme"
 }

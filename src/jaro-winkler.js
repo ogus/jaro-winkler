@@ -7,8 +7,8 @@
   /**
    * Compute the similarity between two Strings
    *
-   * @param {string} string1 First word
-   * @param {string} string2 Second word
+   * @param {string} str1 First string
+   * @param {string} str2 Second string
    * @param {Object} inputConfig Additionnal configuration
    * @return {float} Similarity, in range 0 (no similarity) to 1 (exact similarity)
    */
@@ -18,6 +18,7 @@
       return 0;
     }
 
+    var config = setConfig(inputConfig);
     if (!config.caseSensitive) {
       str1 = str1.toUpperCase();
       str2 = str2.toUpperCase();
@@ -28,21 +29,21 @@
       return 1;
     }
 
-    let distanceMax = Math.floor(Math.max(str1.length, str2.length)*0.5) - 1;
+    var distanceMax = Math.floor(Math.max(str1.length, str2.length)*0.5) - 1;
     // find matching char between strings
-    let match = [new Array(str1.length), new Array(str2.length)];
+    var match = [new Array(str1.length), new Array(str2.length)];
     // number of matching char
-    let m = 0;
-    let low = 0, high = 0;
-    for (let i = 0; i < str1.length; i++) {
+    var m = 0;
+    var low = 0, high = 0;
+    for (var i = 0; i < str1.length; i++) {
       low = i < distanceMax ? 0 : i - distanceMax;
       high = (i + distanceMax > str2.length) ? (str2.length - 1) : (i + distanceMax);
 
-      for (let j = low; j <= high; j++) {
+      for (var j = low; j <= high; j++) {
         // this avoid counting matching char twice
         if(match[0][i] !== true && match[1][j] !== true && str1[i] === str2[j]) {
           m++;
-           // store the match
+           // store the matching char
           match[0][i] = match[1][j] = true;
           break;
         }
@@ -55,12 +56,12 @@
     }
 
     // count the number of transpositions
-    let offset = 0;
-    let transposition = 0;
-    for (let i = 0; i < match[0].length; i++) {
+    var offset = 0;
+    var transposition = 0;
+    for (var i = 0; i < match[0].length; i++) {
       if (match[0][i] === true) {
 
-        for (let j = offset; j < match[1].length; j++) {
+        for (var j = offset; j < match[1].length; j++) {
           if (match[1][j] === true) {
             offset = j + 1;
             break;
@@ -74,11 +75,11 @@
     }
 
     // Jaro score
-    let similarity = (m/str1.length + m/str2.length + (m - transposition*0.5)/m) / 3;
+    var similarity = (m/str1.length + m/str2.length + (m - transposition*0.5)/m) / 3;
 
-    // Jaro–Winkler score: change score based on matching prefixes in strings
-    if (config.winkler) {
-      let len = 0;
+    // Jaro–enableWinkler score: change score based on matching prefixes in strings
+    if (config.enableWinkler) {
+      var len = 0;
       while (str1[len] === str2[len] && len < config.prefixLength) {
         len++;
       }
@@ -89,9 +90,9 @@
   }
 
   function setConfig(inputConfig) {
-    let config = {
+    var config = {
       caseSensitive: false,
-      winkler: true,
+      enableWinkler: true,
       scalingFactor: 0.1,
       prefixLength: 4
     };
@@ -108,11 +109,11 @@
 
   var JaroWinkler = {
     similarity: function (string1, string2, inputConfig) {
-      let result = getSimilarity(String(str1), String(str2), inputConfig || {});
+      var result = getSimilarity(String(string1), String(string2), inputConfig || {});
       return result;
     },
     distance: function (string1, string2, inputConfig) {
-      let result = getSimilarity(String(str1), String(str2), inputConfig || {});
+      var result = getSimilarity(String(string1), String(string2), inputConfig || {});
       return 1 - result;
     }
   };
